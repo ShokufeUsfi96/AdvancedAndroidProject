@@ -4,20 +4,25 @@ import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
+import android.widget.Toast
 import androidx.drawerlayout.widget.DrawerLayout
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),TestRecyclerClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val drawerLayout = drawer
+
         val list = arrayListOf<String>("  Profile","  Products","  Share","  About Us")
 
-        val adapter = TestKotlinRecyclerAdapter(list)
+        val adapter = TestKotlinRecyclerAdapter(list, this)
         recycler.adapter = adapter
 
 
+    }
+
+    override fun onclick(name: String) {
+        Toast.makeText(this, name, Toast.LENGTH_SHORT).show()
     }
 }

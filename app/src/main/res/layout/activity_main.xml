@@ -25,7 +25,9 @@
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="#D32F2F"></RelativeLayout>
+                android:background="@drawable/images"
+        android:alpha="0.8">
+        </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler"
