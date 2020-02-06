@@ -16,7 +16,11 @@ class MainActivity : AppCompatActivity(),TestRecyclerClickListener {
 
         val list = arrayListOf<String>("  Profile","  Products","  Share","  About Us")
 
-        val adapter = TestKotlinRecyclerAdapter(list, this)
+        var clickListener: (String)->Unit={
+            Toast.makeText(this,it,Toast.LENGTH_SHORT).show()
+        }
+
+        val adapter = TestKotlinRecyclerAdapter(list, clickListener)
         recycler.adapter = adapter
 
 

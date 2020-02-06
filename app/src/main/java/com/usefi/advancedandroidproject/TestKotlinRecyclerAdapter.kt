@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.drawer_items.view.*
 
-public class TestKotlinRecyclerAdapter(val names : List<String>, val clickListener: TestRecyclerClickListener) : RecyclerView.Adapter<TestKotlinRecyclerAdapter.TestRecyclerViewHolder>() {
+public class TestKotlinRecyclerAdapter(val names : List<String>, val clickListener: (String) -> Unit) : RecyclerView.Adapter<TestKotlinRecyclerAdapter.TestRecyclerViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestRecyclerViewHolder {
@@ -23,7 +23,7 @@ public class TestKotlinRecyclerAdapter(val names : List<String>, val clickListen
 
     }
 
-    class TestRecyclerViewHolder(val item: View, val  clickListener: TestRecyclerClickListener) : RecyclerView.ViewHolder(item) {
+    class TestRecyclerViewHolder(val item: View, val  clickListener: (String) -> Unit) : RecyclerView.ViewHolder(item) {
 
         fun onBind(name: String){
             if (adapterPosition == 0)
@@ -38,7 +38,7 @@ public class TestKotlinRecyclerAdapter(val names : List<String>, val clickListen
 
             item.txtItem.text = name
             item.setOnClickListener{
-                clickListener.onclick(name)
+                clickListener(name)
             }
 
 
