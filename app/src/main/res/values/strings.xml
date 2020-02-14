@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">AdvancedAndroidProject</string>
+    <string name="city">city</string>
+    <string name="country">country</string>
+    <string name="show_times">Show Times</string>
+    <string name="sunrise">Sunrise : </string>
+    <string name="fajr">Fajr :</string>
+    <string name="dhuhr">Dhuhr :</string>
+    <string name="asr">Asr :</string>
+    <string name="sunset">Sunset :</string>
+    <string name="maghrib">Maghrib :</string>
+    <string name="isha">Isha :</string>
+    <string name="imsak">Imsak :</string>
+    <string name="midnight">Midnight :</string>
 </resources>

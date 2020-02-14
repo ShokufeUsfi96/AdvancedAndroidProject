@@ -1,10 +1,8 @@
 package com.usefi.advancedandroidproject
 
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.drawer_items.view.*
 
@@ -27,14 +25,7 @@ public class TestKotlinRecyclerAdapter(val names : List<String>, val clickListen
 
         fun onBind(name: String){
             if (adapterPosition == 0)
-                item.txtItem.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_person,0,0,0)
-            else if (adapterPosition == 1)
-                item.txtItem.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_shop,0,0,0)
-            else if (adapterPosition == 2)
-                item.txtItem.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_share,0,0,0)
-            else if (adapterPosition == 3)
-                item.txtItem.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_info,0,0,0)
-
+                item.txtItem.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_access_time,0,0,0)
 
             item.txtItem.text = name
             item.setOnClickListener{
