@@ -1,4 +1,4 @@
-package com.usefi.advancedandroidproject.retrofit
+package com.usefi.advancedandroidproject.MVVM
 
 import com.usefi.advancedandroidproject.pojo.AladhanResponseModel
 import io.reactivex.Observable
@@ -14,5 +14,5 @@ interface RetrofitInterface {
         @Query("city")city : String,
         @Query("country")country : String,
         @Query("method")method : Int
-    ): Call<AladhanResponseModel>
+    ): Observable<AladhanResponseModel>
 }
