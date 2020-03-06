@@ -9,14 +9,14 @@
         tools:context=".MVVM.ViewActivity">
 
     <ImageView
-            android:id="@+id/img"
+            android:id="@+id/imgTime"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginBottom="15dp"
             android:scaleType="centerCrop" />
 
     <EditText
-            android:id="@+id/edtCity"
+            android:id="@+id/edCity"
             android:hint="@string/city"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
             android:background="@drawable/edt_style"
             android:textColorHint="#80D32F2F" />
     <EditText
-            android:id="@+id/edtCountry"
+            android:id="@+id/edCountry"
             android:hint="@string/country"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
             android:layout_marginTop="5dp"/>
 
     <Button
-            android:id="@+id/btnTimes"
+            android:id="@+id/btnShow"
             android:text="@string/show_times"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp"/>
             <TextView
-                    android:id="@+id/txtFajr"
+                    android:id="@+id/txFajr"
                     android:layout_weight="3"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
@@ -88,7 +88,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp"/>
             <TextView
-                    android:id="@+id/txtSunrise"
+                    android:id="@+id/txSunrise"
                     android:layout_weight="3"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
@@ -113,7 +113,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp"/>
             <TextView
-                    android:id="@+id/txtDhuhr"
+                    android:id="@+id/txDhuhr"
                     android:layout_weight="3"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
@@ -138,7 +138,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp"/>
             <TextView
-                    android:id="@+id/txtAsr"
+                    android:id="@+id/txAsr"
                     android:layout_weight="3"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
@@ -163,7 +163,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp"/>
             <TextView
-                    android:id="@+id/txtSunset"
+                    android:id="@+id/txSunset"
                     android:layout_weight="3"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
@@ -188,7 +188,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp"/>
             <TextView
-                    android:id="@+id/txtMaghrib"
+                    android:id="@+id/txMaghrib"
                     android:layout_weight="3"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
@@ -213,7 +213,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp"/>
             <TextView
-                    android:id="@+id/txtIsha"
+                    android:id="@+id/txIsha"
                     android:layout_weight="3"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
@@ -238,7 +238,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp"/>
             <TextView
-                    android:id="@+id/txtImsak"
+                    android:id="@+id/txImsak"
                     android:layout_weight="3"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
@@ -263,7 +263,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp"/>
             <TextView
-                    android:id="@+id/txtMidnight"
+                    android:id="@+id/txMidnight"
                     android:layout_weight="3"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"

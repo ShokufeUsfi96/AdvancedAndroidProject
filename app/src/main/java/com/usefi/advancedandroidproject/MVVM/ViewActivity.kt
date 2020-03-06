@@ -2,24 +2,34 @@ package com.usefi.advancedandroidproject.MVVM
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
 import com.usefi.advancedandroidproject.R
-import io.reactivex.disposables.CompositeDisposable
-import kotlinx.android.synthetic.main.activity_prayer_times.*
 import kotlinx.android.synthetic.main.activity_view.*
-import kotlinx.android.synthetic.main.activity_view.edtCity
-import kotlinx.android.synthetic.main.activity_view.edtCountry
+import java.util.*
 
 class ViewActivity : AppCompatActivity() {
 
-    val viewModel = ViewModelClass()
-    val disposable= CompositeDisposable()
-
+    lateinit var viewModel : ViewModelClass
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view)
 
-        btnTimes.setOnClickListener(){
+        viewModel = ViewModelProvider(this).get(ViewModelClass::class.java)
+
+        val currentTime : Int = Calendar.getInstance()[Calendar.HOUR_OF_DAY]
+        viewModel.getCurrentTime(currentTime)
+
+        viewModel.getImageLiveData().observe(this, androidx.lifecycle.Observer {
+            imgTime.setImageResource(it)
+        })
+
+        viewModel.getTimesLiveData().observe(this, androidx.lifecycle.Observer {
+            txFajr.text = it.toString()
+        })
+
+
+        btnShow.setOnClickListener{
             viewModel.onTimesButtonClicked(getCityCountry().first, getCityCountry().second)
         }
 
@@ -27,14 +37,9 @@ class ViewActivity : AppCompatActivity() {
     }
 
     fun getCityCountry() : Pair<String , String >{
-        val city = edtCity.text.toString()
-        val country = edtCountry.text.toString()
+        val city = edCity.text.toString()
+        val country = edCountry.text.toString()
         return  city to country
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-
-        disposable.dispose()
-    }
 }

@@ -1,15 +1,24 @@
 package com.usefi.advancedandroidproject.MVVM
 
+import com.usefi.advancedandroidproject.R
 import com.usefi.advancedandroidproject.pojo.AladhanResponseModel
 import com.usefi.advancedandroidproject.retrofit.RetrofitInterface
+import io.reactivex.Observable
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.*
 
 class ModelClass {
 
-    fun retrofitObservable(country: String, city: String, method : Int) : Observable<AladhanResponseModel> {
+    fun checkCurrentTime(currentTime : Int) = Observable
+        .just(when(currentTime){
+            20,21,22,23,0,1,2,3 -> {R.drawable.night}
+            in 4..8 -> R.drawable.sunrise
+            in 9..15 -> R.drawable.noon
+            else -> R.drawable.sunset
+        })
+
+    fun sendCityCountry(city: String, country: String) : Observable<AladhanResponseModel>{
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.aladhan.com/v1/")
@@ -19,9 +28,7 @@ class ModelClass {
 
         val timingInterface : RetrofitInterface = retrofit.create(RetrofitInterface::class.java)
 
-        return timingInterface.getTimings(city , country , 8)
-
-
+        return timingInterface.getTiming(city , country , 8)
 
     }
 }

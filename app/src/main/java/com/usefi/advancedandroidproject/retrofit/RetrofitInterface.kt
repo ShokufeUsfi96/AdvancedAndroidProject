@@ -15,4 +15,11 @@ interface RetrofitInterface {
         @Query("country")country : String,
         @Query("method")method : Int
     ): Call<AladhanResponseModel>
+
+    @GET("timingsByCity")
+    fun getTiming(
+        @Query("city")city : String,
+        @Query("country")country : String,
+        @Query("method")method : Int
+    ): Observable<AladhanResponseModel>
 }
