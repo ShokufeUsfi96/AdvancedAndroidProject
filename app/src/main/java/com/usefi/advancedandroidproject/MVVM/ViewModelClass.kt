@@ -4,15 +4,17 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.usefi.advancedandroidproject.pojo.AladhanResponseModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 
 class ViewModelClass : ViewModel() {
     private val model = ModelClass()
     private val disposable = CompositeDisposable()
 
     private val currentTimeResponse = MutableLiveData<Int>()
-    private val timingsResponse = MutableLiveData<String>()
+    private val timingsResponse = MutableLiveData<AladhanResponseModel>()
 
     fun getCurrentTime(currentTime : Int){
         disposable.add(
@@ -29,10 +31,11 @@ class ViewModelClass : ViewModel() {
 
     fun onTimesButtonClicked(city : String, country : String){
         disposable.add(
-            model.sendCityCountry(city,country)
+            model.getTimesObservable(city, country)
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    timingsResponse.value = it.data.timings.Fajr
+                    timingsResponse.value = it
                     Log.d("TAG", "subscribe successfull!!")
                     //timingsResponse.value = it.data.timings.Dhuhr
                 },{
@@ -43,7 +46,7 @@ class ViewModelClass : ViewModel() {
     }
 
     fun getImageLiveData() : LiveData <Int> = currentTimeResponse
-    fun getTimesLiveData() : LiveData <String> = timingsResponse
+    fun getTimesLiveData() : LiveData <AladhanResponseModel> = timingsResponse
 
 
     override fun onCleared() {

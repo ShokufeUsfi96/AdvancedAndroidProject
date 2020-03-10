@@ -18,7 +18,7 @@ class ModelClass {
             else -> R.drawable.sunset
         })
 
-    fun sendCityCountry(city: String, country: String) : Observable<AladhanResponseModel>{
+    fun sendCityCountry() : RetrofitInterface{
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.aladhan.com/v1/")
@@ -26,9 +26,10 @@ class ModelClass {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
 
-        val timingInterface : RetrofitInterface = retrofit.create(RetrofitInterface::class.java)
+        return retrofit.create(RetrofitInterface::class.java)
+    }
 
-        return timingInterface.getTiming(city , country , 8)
-
+    fun getTimesObservable(city: String, country: String) : Observable<AladhanResponseModel>{
+        return sendCityCountry().getTiming(city, country, 8)
     }
 }
