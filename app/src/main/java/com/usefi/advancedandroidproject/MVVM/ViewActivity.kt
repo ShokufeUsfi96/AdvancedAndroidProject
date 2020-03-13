@@ -30,7 +30,6 @@ class ViewActivity : AppCompatActivity() {
         })
 
         viewModel.getTimesLiveData().observe(this, androidx.lifecycle.Observer {
-           // txFajr.text = it.toString()
             showPrayerTime(it.data.timings)
 
         })

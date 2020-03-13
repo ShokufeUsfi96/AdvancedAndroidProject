@@ -1,6 +1,5 @@
-package com.usefi.advancedandroidproject.MVVM
+package com.usefi.advancedandroidproject.DaggerVsKoin.koin
 
-import com.usefi.advancedandroidproject.R
 import com.usefi.advancedandroidproject.pojo.AladhanResponseModel
 import com.usefi.advancedandroidproject.retrofit.RetrofitInterface
 import io.reactivex.Observable
@@ -8,17 +7,9 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ModelClass {
+class TestKoinModel {
 
-    fun checkCurrentTime(currentTime : Int) = Observable
-        .just(when(currentTime){
-            20,21,22,23,0,1,2,3 -> {R.drawable.night}
-            in 4..8 -> R.drawable.sunrise
-            in 9..15 -> R.drawable.noon
-            else -> R.drawable.sunset
-        })
-
-    fun sendCityCountry() : RetrofitInterface{
+    fun sendCityCountry() : RetrofitInterface {
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.aladhan.com/v1/")
@@ -29,8 +20,7 @@ class ModelClass {
         return retrofit.create(RetrofitInterface::class.java)
 
     }
-
-    fun getTimesObservable(city: String, country: String) : Observable<AladhanResponseModel>{
+    fun getData(city: String, country: String) : Observable<AladhanResponseModel> {
         return sendCityCountry().getTiming(city, country, 8)
     }
 }
