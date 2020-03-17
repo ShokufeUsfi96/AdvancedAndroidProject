@@ -16,15 +16,14 @@ class DgrActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dgr)
 
-        val model =DgrModel()
-        val factory = VMFactoryProvider(model)
+        val factory = DaggerFactoryComponent.create().ProvideVMFactory()
         viewModel = ViewModelProvider(this,factory).get(DgrViewModel::class.java)
         btnDagger.setOnClickListener{
             viewModel.getTimesClicked(getCityCountry().first, getCityCountry().second)
         }
 
         viewModel.getTimeLiveData().observe(this, Observer{
-            txtDagger.text = it.data.timings.Dhuhr.toString()
+            txtDagger.text = it.data.timings.Dhuhr
         })
 
     }
