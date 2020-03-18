@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".DaggerVsKoin.dgr.DgrActivity">
+
         </activity>
         <activity android:name=".MVVM_dagger2.TestDaggerView" />
         <activity android:name=".MVVM.ViewActivity" />

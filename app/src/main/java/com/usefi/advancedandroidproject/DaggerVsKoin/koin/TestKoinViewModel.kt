@@ -9,19 +9,19 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class TestKoinViewModel() : ViewModel() {
 
-    private val model = TestKoinModel()
-    private  val TimeLiveData = MutableLiveData<AladhanResponseModel>()
+class TestKoinViewModel(val model: TestKoinModel) : ViewModel() {
+
+    private  val TimeKoinLiveData = MutableLiveData<AladhanResponseModel>()
     val disposable = CompositeDisposable()
 
     fun getKoinTimes(city: String, country: String) {
         disposable.add(
-            model.getData(city, country)
+            model.getKoinData(city, country)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    TimeLiveData.value = it
+                    TimeKoinLiveData.value = it
                     Log.d("TAG", "subscribe successfull!!")
                 },{
                     Log.d("TAG", it.message.toString())
@@ -32,7 +32,7 @@ class TestKoinViewModel() : ViewModel() {
 
 
 
-    fun getTimeLiveData() : LiveData<AladhanResponseModel> = TimeLiveData
+    fun getKoinTimeLiveData() : LiveData<AladhanResponseModel> = TimeKoinLiveData
     override fun onCleared(){
         disposable.clear()
         super.onCleared()

@@ -41,5 +41,11 @@
             android:textSize="26sp"
             android:background="#5BD32F2F"
             android:gravity="center"/>
+    <Button
+            android:id="@+id/goToDagger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="go to dagger"
+            android:layout_marginTop="150dp"/>
 
 </LinearLayout>
